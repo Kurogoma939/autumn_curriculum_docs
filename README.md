@@ -180,3 +180,38 @@ https://qiita.com/gone0021/items/e248c8b0ed3a9e6dbdee
 
 フルネームをスネークケースで作成<br />
 （例） 大月裕太の場合、y_otsuki
+
+<br><br><br>
+
+# 運用（管理）者向け、zennの記事をデプロイする方法
+今回は、zennの記事を非公開リリースするためGoogleのCloud Runを用いてデプロイを行いました。
+簡易的な手順は以下の通りです。
+
+## Google Cloud側の基本操作
+1. https://console.cloud.google.com/ にアクセスし、アカウントを作成する
+2. コンソールに移動し、新規プロジェクトを作成する
+3. プロジェクト内の検索バーで、「Cloud build」と「Cloud Run」の2つを検索し、どちらも使える状態にしておく
+
+## デプロイ手順
+※ProjectIDはデプロイするプロジェクトのIDを入れてください。
+※最後は複数行ありますが、一気に選択してコピペ
+
+```
+$ GCLOUD_PROJECT=ProjectID
+$ gcloud config set project "$GCLOUD_PROJECT"
+$ gcloud auth configure-docker
+$ docker build -t "gcr.io/$GCLOUD_PROJECT/zenn-preview" .
+$ docker push "gcr.io/$GCLOUD_PROJECT/zenn-preview"
+$ setopt nonomatch
+$ service_name="zenn-preview-$(uuidgen | tr [:upper:] [:lower:])"
+$ gcloud run deploy "$service_name" \
+  --image "gcr.io/$GCLOUD_PROJECT/zenn-preview" \
+  --port 8000 \
+  --platform managed \
+  --allow-unauthenticated \
+  --region asia-northeast1
+```
+
+### 参考サイト
+https://zenn.dev/zenn/articles/install-zenn-cli
+https://zenn.dev/zenn/articles/zenn-cli-guide
