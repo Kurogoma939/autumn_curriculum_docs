@@ -25,7 +25,7 @@ Autumn の Slack に`#00_新規入社の方へ`というチャンネルがあり
  https://autumn-frontend-20220909-k2qjtupewq-an.a.run.app 
 
 #### バックエンド
- https://autumn-backend-20220909-k2qjtupewq-an.a.run.app 
+ https://autumn-backend-20220910-k2qjtupewq-an.a.run.app 
 
 <br>
 カリキュラムの進め方は、上記カリキュラムページを見ながら、作業用リポジトリで作業をしてください。<br />
