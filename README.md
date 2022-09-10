@@ -240,6 +240,8 @@ https://qiita.com/gone0021/items/e248c8b0ed3a9e6dbdee
 ## デプロイ手順
 
 プロジェクト ID は Cloud Run に登録されているものです。
+### デプロイ詳細手順（アクセル権限あり）
+https://docs.google.com/spreadsheets/d/1JmgROHqtYniNICgtXf1zn59vuoL3RW759x-CwDFJM6o/edit#gid=0
 
 ```
 GCLOUD_PROJECT=プロジェクトID
